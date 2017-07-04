@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- ========== VIEWPORT META ========== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- ========== PAGE TITLE ========== -->
+    <title>Node JS</title>
+
+    <!-- ========== META TAGS ========== -->
+    <meta name="description" content="Salt - Responsive Multipurpose HTML5 Template ">
+    <meta name="keywords" content="business, responsive, multi-purpose">
+    <meta name="author" content="ThemesEase">
+
+    <!-- ========== FAVICON & APPLE ICONS ========== -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- ========== MINIFIED VENDOR CSS ========== -->
+    <link rel="stylesheet" href="styles/vendor.css">
+
+    <!-- ========== MAIN CSS ========== -->
+    <link rel="stylesheet" href="styles/main.css">
+
+    <script src="scripts/vendor/modernizr.js"></script>
+    
+</head>
+
+<body class="header-shadow light-header">
+
+    <!-- ========== LOADER ========== -->
+    <div class="page-loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- ========== HEADER ========== -->
+    <div class="header menu-style-1">
+
+        <!-- ========== TOP BAR ========== -->
+        <div class="top-menu">
+            <div class="container-fluid">
+                <div class="left-div pull-left">
+                    CURSO DE NODE JS 
+                </div>
+                <div class="right-div pull-right">
+                    <a href="#"> 49 9-9120-9970</a>
+                    <a href="#">patrick@microvision.com.br</a>
+                </div>
+            </div> <!-- end container-fluid -->
+        </div> <!-- end top-menu -->
+
+        <div class="container-fluid">
+
+            <!-- ========== MENU ========== -->
+            <nav class="menu">                
+                <!-- ========== MAIN MENU ========== -->
+                <ul class="main-menu">
+                    <li class="menu-item">
+                        <a href="http://localhost:3000/"><i class="menu-icon fa fa-home"></i> Home</a>
+                        <!-- Sub Menu -->
+                        </li>
+                        <li class="menu-item">
+                        <a href="http://localhost:3000/agenda/form"><i class="menu-icon fa fa-home"></i>Cadastrar Agenda</a>
+                        <!-- Sub Menu -->
+                        </li>
+                        <li class="menu-item">
+                        <a href="http://localhost:3000/agenda"><i class="menu-icon fa fa-home"></i> Listar Agenda</a>
+                        <!-- Sub Menu -->
+                        </li>                        
+                                                   
+                            </li>
+                        </ul> <!-- end mega-submenu -->
+                    </li> <!-- end menu-item -->
+             </ul></nav>
+             </div></div>
+             <div><br><br><br></div>
+
+              <section class="content-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-header text-center">
+                        <h3 class="section-title underline">AGENDA DE CLIENTES</h3>
+                        
+                    </div> <!-- end section-header -->
+
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover">
+                            <caption>Clientes</caption>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nome</th>
+                                    <th>Celular</th>
+                                    <th>Email</th>
+                                    <th>CPF</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                              <% for(var i=0; i<lista.length; i++) {%>
+
+                                <tr>
+                                    <th><%= lista[i].id %></th>
+                                    <th><%= lista[i].Nome %></th>
+                                    <th><%= lista[i].Celular %></th>
+                                    <th><%= lista[i].email %></th>
+                                    <th><%= lista[i].cpf %></th>
+                                </tr>
+
+                              <% } %>                              
+                              
+                            </tbody>
+                        </table>
+                    </div> <!-- end col-md-6 -->          
+
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+
+    <script src="scripts/vendor.js"></script>
+    <script src="scripts/plugins.js"></script>
+    <script src="scripts/main.js"></script>    
+    <script src="/socket.io/socket.io.js"></script>
+   <script>
+    var socket = io();
+    socket.on('nova', function(data,results) {        
+
+        $(".table").append('<tr><th>'+results.insertId+'</th><th>'+data.nome+'</th><th>'+data.celular+'</th><th>'+data.email+'</th><th>'+data.cpf+'</th></tr>');
+    });
+</script>
+</body>
+
+</html>
